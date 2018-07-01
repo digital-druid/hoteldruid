@@ -1,0 +1,913 @@
+2.2.3 (04/06/2018)
+======================
+-mantain confirmation status when modifying reservations as a group and only some are confirmed
+-on mobile devices scroll horizontally tables larger than sceen (blue, colors and simple themes)
+-show availability and minimum stay in rate table and possibility to modify prices and minimum stay
+-possibility to add an extra cost inserted by administrator to all users or existing webpages
+-fixed bug: could not delete last document without reservation number from documents table
+-fixed bug: room not updated in extra costs when room name changed
+-clicking on a price in rates table gives the possibility to edit it
+-better compatibility with php 7.1 and 7.2
+-in month table possibility to keep assigned rooms when a reservation is moved to not assigned one
+-constants to limit the number of created backups and calls to documents API
+-comment when passing over temporary reservations in month table explaining how they work
+-select by default current date for date selectors in reservations payments table
+-possibility to change the name of the room for all beds in the same room from rooms table
+-privilege for normal users to manage credit cards password
+-"rules 2" table now shows also rates without a rule and a "modify" link
+-fixed bug: when changing rates order rates from which prices are imported were not updated
+-when creating new year do not delete credit cards of clients with reservations in last 4 months
+-delete cvc code of credit cards after being seen twice
+-fixed bug: error when inserting a reservation with fixed room and extra cost incompatile with it
+-fixed bug: reservations not always inserted when using "continue anyway" button for assignment
+-better memory management when creating a backup file
+-fixed bug: couldn't add custom fields to clients with postgresql database
+-updated sqlite funtions for better memory management
+-fixed bug: values not escaped when inserting in cashbox from point of sale
+
+
+2.2.2 (28/02/2018)
+======================
+-with fast insertion of extra bed possibility to set a limit of extra beds per room
+-warning when modifying rule 4 and there are rooms that can't host the selected number of people
+-when rule 2 is modified give a warning if there are rooms in the rule not included in exception
+-option to consider a document as an "API" that can be called from some URLs
+-warning to add periods from main menu with less than 4 months from the last available date
+-fixed residual amounts when importing cashboxes from previous year
+-fixed bug: wrong dates in drop-down menus with php 7.1
+-when modifying extra costs preselect the same minimum/maximum days also for non-selected rates
+-added an html version of "last payment receipt" to default documents
+-added a documents variable with default current hoteldruid url for webpages
+-added functions for URL encode, md5, ASCII and lower/upper case in documents conditions
+-constants to set default duration for credit card password, forbidding last x passwords
+-restrictions for credit card password (at least 8 characters, letters and numbers/symbols)
+-possibility to store credit cards data on an external module
+-fixed bug: deposit could be higher than total price in availability webpage
+-possibility to import also groups when user privileges are imported
+-fixed bugs: missing theme files from "show source" and source not updated with missing directory
+-option to modify title phrases in default themes in webpages
+
+
+2.2.1 (27/07/2017)
+======================
+-possibility to don't show past dates in webpage with rates table
+-default theme for webpages has been updated for better mobile view
+-add http:// before web URL if it begins with www. in structure data
+-possibility to import the prices from one rate to another only in selected periods
+-possibility to edit permanently imported rates
+-enhancements to download of messages from email account
+-fixed bug: add only extra costs in insertion page when checking availability from main menu
+-fixed security bug when creating webpages
+-code for special offers in availability webpage
+-possibility to automatically associate only selected extra costs in the availability webpage
+-fixed bug: dates selectors errors on some computers in blue, colors and simple themes
+-fixed bug: error when inserting extra cost from point of sale on some databases
+-fixed bug: grouped extra costs not inserted correctly from messages 
+-added a "rooms cleaning report" to default documents
+-the "truncate" condition for document variables now accepts negative values for distance from end
+-added variable [null_value] to default document variables
+-possibility for document conditions to be applied only in specific repetitions
+-variable [extra_cost_max_multiply] is now exactly equal to day multiply inside date repetitions
+-fixed bug: after availability check, viewing multiple emails showed only first in choosen language
+-fixed bug: reservation comments sometimes not displayed correctly in "modify client data" page
+-default invoices now correctly show subtotals when there are different percentages for taxes
+-fixed bug: error when showing document in availability page
+-fixed bug: rates with special characters could not be set when modifying a reservation
+-fixed bug: sometimes year not created automatically at first login with server difference hours
+-fixed bug: sometimes wrong prices searching availability with per person prices and multiple rule 2
+
+
+2.2.0 (22/12/2016)
+======================
+-added "blue" and "colors" themes removing icons from simple themes, "blue" is the new default theme
+-possibility for assignment rule 2 to reserve x number of selected units, also as nearby units
+-fixed bug: sometimes assignment rules 2 were not updated correctly when rooms were renamed
+-option for nearby rooms in website availability page
+-faster automatic assignment function when searching nearby rooms
+-possibility to insert only reservations of the same type as "nearby" when inserting new reservations
+-fixed bug: privilege for always inserting reservation payments in a cashbox not working properly
+-fixed bug: permitted cashboxes were not imported from one user to another
+-fixed some bugs and error reporting in Italian document "file alloggiatiweb"
+-fixed bug: lock warnings when deleting a reservation that begins in previous year
+-fiscal code and vat number are now asked when inserting new clients and in availability webpage
+-added a check for functions utf8_encode and utf8_decode
+-added a warning when creating availability page and there are rates without assignment rule 2 
+-set opcache.enable to 0 in pages where included files are overwritten
+-added /novalidate-cert to protocols when downloading emails in messages
+-fixed bug: with multiple reservations wrong nation and region lines in default invoices
+-possibility to use an external css file also for default themes in website pages
+-possibility to "import now" prices from the same rate that is importing prices
+
+
+2.1.4 (06/02/2016)
+======================
+-added "export clients data" document in csv format to default documents
+-selecting documents from month table will select first date in previous month even for first month
+-added icons to base.css and simple themes
+-fixed bug: not uploading documents on some server configurations
+-optimizations for mobile view
+-fixed bug: in pos extra costs could not be added to some reservations when check-in not enabled
+-new costant in includes/costanti.php for mobile custom css (loaded after default custom css)
+-fixed bug: tables not locked in function that displays messages about saved documents
+-fixed bug: variable [rate_price_of_array_day] was not defined if not inside reservations repetition
+-fixed bug: errors restoring a backup with constant C_EXT_DB_DATA_PATH enabled and mysql database
+
+
+2.1.3 (29/10/2015)
+======================
+-added new document "ISTAT C/59_M" with monthly totals to default Italian documents
+-when an extra cost is deleted return directly to the costs table
+-in inventory when adding/subtracting items display a "+"/"-" in front of quantity box
+-"item: old quantity + difference = new quantity" shown when changing quantity of inventory items
+-possibility to customize x, + and - buttons in point of sale
+-possibility to sort inventory and pos alphabetically instead of insertion order
+-fixed bug: modifying a cost removing from stockroom, it was not selected without apartment privileges
+-client comment shown in existing clients when inserting a reservation
+-privilege to modify interconnections
+-custom comments (also available in documents variables and website pages)
+-possibility to link agreements to custom client fields in website pages
+-fixed bug: error when inserting some extra costs category names
+-added privilege to view reservations comment
+-possibility to import also customizations from one user to another one in users management
+-added origin and insertion date in reservation preview from month table
+-fixed bug: when advancing by days in month table too long reservations were not ended
+-fixed bug: rates closed with rule 1 were not updated when changing rates order
+-fixed bug: messages without a subject were not downloaded
+-fixed bug: lock not deleted for documents saved in compressed format
+-fixed bug: not updating progressive number when saving documents not linked to any reservation
+-updated list of Italian regions and cities
+-new document action to assign to a variable the number of days, months or years between 2 dates
+-comment imported when inserting a reservation from avaialbility page
+-fixed bug: sometimes normal users could not insert a reservation when units were closed with rule 1
+-fixed bug: errors when deleting documents with some document names
+
+
+2.1.2 (26/01/2015)
+======================
+-possibility to change horizontal offset for calendars when creating webpages (by default on left now)
+-fixed bug: errors when changing documents order with some document names
+-possibility to exclude an extra cost from the total price for percentage of other costs
+-fixed bug: wrong calculation of taxes in statistics when there were taxes on extra costs
+-fixed bug: extra costs categories and rules 1 for closures not imported correctly in new year
+-in documents assign to arrays dates between first arrival and last departure of selected reservations
+-in documents repetitions of costs inside a repetition of dates, show daily costs only on applied dates
+-enhanced enquiry emails download in messages table
+-fixed bug: errors when modifying extra costs in groups of reservations
+-fixed bug: repetitions of reservations inside repetitions of units not working properly in documents
+-possibility to select separately wich totals (daily/monthly/table) are shown in chashboxes
+-when administrator activates checkin and checkout, past reservations are marked as checked out
+-updated non ASCII characters in rtf documents
+-fixed bug: reservations not shown in month table with some privileges and mysqli functions
+-fixed bug: errors when restricting rooms in user privileges and using mysqli functions
+-added "RIMOVCLI" to default Italian documents for ISTAT in Liguria region
+-show current reservations + departures in all reservations table as default or from menu (simple theme)
+-possibility to advance by one period also if 2 periods are selected in all reservations table
+-added "Turiweb Ricestat" to default Italian documents for ISTAT in Livorno province
+
+
+2.1.1 (12/11/2014)
+======================
+-button to delete all credit cards from past reservations
+-possibility to show daily and monthly totals between chashbox rows
+-possibility to view and download text documents with another extension
+-privilege to avoid that a user can delete or overwrite a document even if he can create/view it
+-fixed bug: cached total price not updated in reservations when inserting costs from pos
+-possibility to create a corresponding extra cost when inserting items in inventory
+-possibility to add/subtract the new quantity to items in inventory
+-autofocus when inserting new items and items in inventory
+-global custmization to manage credit cards cvc numbers (with warning and disclaimer)
+-show at most last 5 years in statistics
+-updated italian documents to show a more detailed message for missing cities in "file alloggiatiweb" 
+-fixed bug: problems when changing language with php 5.6 (included files are now cached?)
+-fixed bug: messages not marked as read when deleted from a user
+-fixed bug: condition to truncate variables in documents not applied correctly with non ascii characters
+-fixed bug: backup not restored when using some tags in documents
+-updated mysqli functions to use less memory
+-fixed bug: wrong date format in check-in table
+-added greek alphabet to rtf documents
+-fixed bug: wrong rounding when adding items in point of sale with javascript
+-fixed bug: not showing prices with only per person values in webpage with rate table
+-fixed bug: error when inserting a reservation with a rate with only per person prices
+-fixed bug: wrong extra cost price for daily costs with percentage on one person
+
+
+2.1.0 (25/03/2014)
+======================
+-additional boolean or text fields with custom name for clients data, also in documents
+-do not check ip address for sessions over secure https connections
+-possibility to consider an extra cost as taxes (also updated default invoices)
+-do not save ccvv for credit cards
+-show credit card info only on ssl secure connection or localhost
+-when creating new year automatically delete credit card info of clients not imported in new year
+-possibility to choose colors for reservations in month table
+-constants for custom css file and favicon in includes/costanti.php
+-added [enquiry_email_text] and [enquiry_email_quoted_text] to document variables
+-possibility to import email messages into messages table, trying to detect dates, email address and name
+-show time near the date in messages table
+-fixed bug: no comment shown in group columns in reservations table
+-pages for messages table
+-new rule 1 to close a rate between 2 dates
+-possibility for rule 1 to close a unit between 2 dates
+-fixed bug: when moving a reservation from month table, nearby reservations were lost
+-option to create new rooms as beds (maximum occupancy of 1, no extra beds and 1 guest maximum)
+-fixed bug: nearby units were deleted when showing nearby units grid with more than 70 units
+-fixed bug: some extra costs restrictions not considered when checking availability from main menu
+-possibility to create more rooms at once (comma separated list)
+-fixed bug: wrong dates when moving by day or week in month table if dates are aligned with arrival
+-added mysqli functions for database connection
+-fixed bug: from some languages not using the correct file name when creating some web pages
+-fixed bug: error when restoring a backup with custom room names
+
+
+2.0.3 (09/03/2013)
+======================
+-possibility to show an extra cost as taxes in default invoice documents
+-possibility to show a reminder when doing the checkin or checkout for a reservation
+-fixed bug: error when modifying prices with postgresql
+-customize search for clients
+-month 0 in progressive incomes in statistics
+-fixed bug: per person prices not imported when adding months
+-open payments list from "modify reservation" with javascript and added inserting user
+-link to "modify reservation" from paymets table
+-button to delete credit cards numbers of past reservations in clients table
+-possibility to permanently import the prices of one rate from another
+-when in Italian document "alloggiatiweb" some data is missing send an error message with the missing data
+-possibility to add only one selected document when restoring documents backup
+-possibility to directly delete a document
+-possibility to increment the document progressive number each time it appears in the document
+-fixed bug: couldn't modify reservations with extraordinary extra costs multiplied by more than the people
+-possibility to view documents from point of sale when extra costs are inserted
+-possibility to add custom html headers to html documents
+-structure logo in document variables and logo in default html invoices
+-added a variable with daily price in dates repetitions
+-added a repetition for reservation payments and another for rooms in documents
+-added current user and inserting date/user for extra costs, payments and reservations in document variables
+-added the (maximum) number by which an extra cost is multiplied in document variables
+-insert a reservation choosing dates and apartment clicking on free cells in the month table
+-title with reservation data (XMLHttpRequest) when passing over a reservation in month table
+
+
+2.0.2 (11/12/2012)
+======================
+-added Turistat document to default Italian documents
+-updated C/59 ISTAT Italian document
+-in documents show codes for nations, regions, etc. also for the ones that are not in user lists
+-updated the default list of nations (added 2nd code to English and Spanish lists)
+-possibility to assign to an array the values of another array in document conditions
+-possibility to have string keys for arrays in documents text, like [array1('val')]
+-fixed bug: possible infinite loop when enabling the password for a user
+-"add periods" button when displaying last month in month table
+-new document action to assign to a variable the value of day, month, year, etc. of dates +/- X days
+-added "contains" (case sensitive and insensitive) to operators for "if" conditions in document variables
+-"ini.php" file for constants to set username and password of administrator user while installing
+-contact name in default sender for document emails
+-possibility to advance or retrocede by one or seven days in month table (XMLHttpRequest)
+-possibility to don't show others' reservations in month tables (instead of showing them in grey)
+-fixed bug: some reservations not showing in month table with privilege to show reservations from groups
+-fixed bug: errors with extra costs that ask numbers in website pages
+
+
+2.0.1 (24/6/2012)
+======================
+-fixed bug: extra costs calculated as percentage of all persons instead of one person
+-fixed bug: checking availability gives wrong "per person" rates when extra beds are automatically added
+-show warning when creating a calendar web page with grouping with rule 2 and there are no rules 2
+-fixed bug: "per person" prices not moved when changing rates order
+
+
+2.0.0 (12/6/2012)
+======================
+-when rounding the deposit, if it is rounded to 0 then set it to the "rounded to" value
+-possibility to change arrival/departure date by dragging left/right edge in month table
+-added html format to email documents
+-added "salt" to md5 passwords and disabled plain text passwords
+-vertical drag and drop (html5) of reservations to change apartment from month table
+-welcome message with all the suggested configuration steps when hoteldruid is installed
+-option for automatic creation of database in includes/costanti.php
+-fast extra cost insertion for: minimum stay; number of children; special offer; extra bed
+-try to import also permitted pediods of extra costs when adding periods
+-error messages and warnings with conflicting options when modifying an extra cost
+-possibility to combine extra costs in same category (if selected then all costs are inserted when possible)
+-possibility to calculate % of extra costs also only on fixed base rate or on one person base rate
+-possibility for extra costs to have both a fixed price and % of the rate price
+-maximum number by which an extra cost can be multiplied if the number is asked (also base/total people less x)
+-possibility to add/subtract a fixed number to the number by which an extra cost is multiplied (0 if negative)
+-register logins when logs are enabled for a user
+-sqlite3 database support (sqlite2 dropped)
+-possibility for rates to have both a fixed and per person price
+-possibility to dinamically add more (or less) than 8 periods when inserting prices
+-path to dati folder in hoteldruid/costanti.php
+-accept arrays as variables for parts under condition in documents
+-privileges to view telephones/emails and address of clients
+
+
+1.3.2 (14/07/2011)
+======================
+-possibility to modify inserted inventory items
+-possibility to import rates adding a fixed value instead of %
+-possibility to modify documents in normal users' global privileges
+-user privilege to always insert reservation payments as income in a selected cashbox
+-maximum number of rows to show in cashboxes tables
+-use of javascript in point of sale interface
+-multiple cashboxes
+-payment method in cashbox payments
+-possibility to import variables and conditions from a document to another one
+-changed project name from "php-residence" to "hoteldruid"
+-queries log for a single user or group
+-possibility to save compressed documents
+-backup and restore of single years
+-possibility to customize the name of the rental unit
+-fixed bug: wrong prices in statistics without commissions
+-fixed bug: wrong discount when imposing the price on reservations with extra costs on total price
+-possibility to show statistics for reservations inserted in a specific period of the year
+-link to home in default themes for website pages
+-possibility to open seconond step in new window from framed mode in availability page
+-fixed bug: language_code variable not defined when opening documents from clients table
+-fixed bug: error when calculating new commissions for a group of reservations
+-fixed bug: errors when restoring a document already present
+-fixed bug: error when selecting apartments from a rate in statistics
+
+
+1.3.1 (08/11/2010)
+======================
+-possibility to show principal guest surname in all reservations table if different from client surname
+-possibility to show detailed extra costs when checking availability
+-possibility to show not available rates when checking availability
+-variable [email_already_sent] with "sent status" (1 or 0) in document emails
+-spoken language in clients data and possibility to show different document depending on language
+-when searching a client, also show current year reservations in the table
+-changed "internet templates" phrase to "website pages"
+-possibility to calculate statistics without commissions and/or taxes
+-possibility to apply commissions on rate+discount and on rate+discount+extra costs
+-deposit calculated as first x nights
+-search a reservation number from top bar menu in simple theme
+-titular client nationality statistics
+-fixed bug: discount not calculated on "RevPAR without extra costs" in statistics
+-possibility to hide money of deleted reservations in all reservations table
+
+
+1.3 (04/06/2010)
+======================
+-multiple languages (as available in lang dir) for descriptions of rates and apartments and comments for photos
+-return to the last layout of table with all reservations during session
+-"point of sale" to rapidly add extra costs to current/checked-in reservations
+-extra costs categories for grouping them
+-groups in "schedine alloggiati" document
+-html invoice in document examples
+-special document variable [repetition_error] that can make a reservation/client not shown in repeated documents
+-reservation insertion date in document variables
+-possibility to automatically create saved documents at checkin or checkout
+-possibility to view documents from below the clients table
+-special document variable [error_message] that when set an error is shown instead of the document
+-save documents with a different name from document name and share the progressive number with other documents
+-possibility for a document to use variables and conditions from another document instead of its own
+-automatically apply an extra cost (daily type, lower id first) as extra beds when number of people requires it
+-use daily prices stored in reservation when changing only arrival or departure dates
+-use document provided taxes values in default invoice document
+-column to show saved documents in all reservations table
+-select from "configure and customize" extra rows to show in all reservation table
+-possibility to insert deposit and commissions as % of the rate when inserting and modifying a reservation
+-insert default and daily commissions for rates, calculated and shown in documents and all reservations table
+-insert percentage VAT for rates and extra costs, calculated and shown in documents and all reservations table
+-fixed 2 bugs in assignment function (one of them only with groups of reservations)
+-check for payments and documents in previous years if the reservation was inserted in previous years
+-custom periods in drop-down menus are now kept when creating a new year
+-table to see all documents saved, delete last and upload a new one
+-templates with documents are created again when documents order is changed
+
+
+1.2.2 (02/12/2009)
+======================
+-added "informativa sulla privacy" text document to Italian default documents
+-possibility to ask to accept an agreement from an html or text document in availability template
+-fixed bug: variables of payments and extra costs not defined in documents
+
+
+1.2.1 (24/11/2009)
+======================
+-possibility to choose predefined themes instead of custom html in internet templates
+-framed mode in internet templates with possibility for an external css file
+-replaced extended regular expression functions with perl regular expressions functions
+-possibility to use lists of nations, regions, etc. from a normal user in internet templates
+-better memory management when viewing and restoring complete backups
+-description and photo urls for apartments and rates
+-added 2nd and 3rd code for nations, regions, cities, etc.
+-modify guests from a group in 1 page
+-page to modify a reservation on 2 columns if there is enough width
+-keep old dates intervals in dates menu when dates are added
+-fixed bug: error when modifying the discount of a group of reservations
+-fixed bug: wrong rates shown in rates table when there is the privilege to view rates from groups
+-possibility to show floor and house in all reservations table
+
+
+1.2 (25/05/2009)
+======================
+-when a daily extra cost is used as minimum stay (applied in permitted periods) check also the days when it is applied
+-return to original page when making a login after an expired session
+-nickname in clients data
+-copy existing comment text when modifying a reservation and clicking on comment textarea
+-order by apartment in all reservations table
+-create automatically new year on January 10th instead of 1st
+-creating new year update imported reservations numbers in saved documents
+-creating new year import also messages, res. payments, payments and receipts inserted in created year
+-possibility to make an item needed for checkin when adding it to an apartment inventory
+-encrypt clients' credit card data with ssl public/private keys
+-fixed amount as deposit
+-automatic version update with non-interactive logins (interconnections)
+-privilege to create backups for normal users
+-automatic source download and update for subordinated installations
+-transition from GPL v3 to Affero GPL v3 license
+-documents saved with current year date instead of main menu year if new year has not been created yet
+-possibility to attach the same attachment to different emails in documents
+-show warning when sending a document email with a subject already sent to the client
+-percentage discount or final price after discount or daily price after discount
+-replaced "close apartments" with "nearby apartments" in English translation
+-in all rates table group dates and prices with drop-down menu dates (also when modifying)
+-possibility to show only selected rates from all rates table and from current dates
+-possibility to change the order of rates
+-added "schedine alloggiati", "ISTAT C/59" and "alloggiatiweb file" to Italian documents examples
+-possibility to edit already inserted documents conditions
+-fixed bugs: possible problems when inserting and modifying reservations in close apartments
+-new document action to don't evaluate conditions until next "resume" action
+-composable document conditions: "always" or "if" (multiple and/or); the action; all repetitons or not
+-assign predefined values to a document array with a condition action instead of assigning them at array creation
+-added an invoice and receipt in rtf and an enquiry reply and confir reservation emails to documents examples
+-limits for parts to be shown only if a condition on a variable is met in documents text
+-separate documents examples for each language
+-"view document" and "modify as a group" for selected reservations only in all reservations table (simple theme)
+-possibility to view documents from month table
+-possibility to change the order of documents
+-added structure data in "cofigure and customize": type, name, address, telephone, fax, vat number...
+-vat number in clients data
+-possibility to change the apartment list of assignment rule 2 from x days before arrival
+-fixed bug: problems with inventory of apartments not named with a number
+-possibility to multiply rates prices by number of people (without extra beds)
+-moved images and themes directories outside includes and added base.css
+-fixed bug: deposit calculated on total price when modifying a reservation
+
+
+1.1.1 (16/11/2008)
+======================
+-renamed backup file to phpres_backup.php
+-possibility to modify singular rates when modifying a group of reservations
+-possibility to replace variable texts and other new conditions in documents custom variables
+-possibility to add variables and conditions to a sigle document
+-added arrays of document variables and possibility to repeat them in the document
+-added selection_starting_date and selection_ending_date to document variables
+-if possible lengthen php timeout when making or resoring a backup or updating year and database
+-display backup creation date if a backup file exists
+-menu bar shown after sending a document email
+-serch client surname and email from drop down box in simple theme menu
+-possibility to display extra costs with same characteristics grouped in drop-down menus in insertion
+-possibility to delete items from inventory when an extra cost is inserted
+-incompatible apartments in extra costs (not for automatically assigned)
+-fixed bug: sometimes not possible to modify reservations in close apartments
+-assign automatically extra costs also between minimum and maximum days
+-refill missing inventory items from stockrooms and apartments over minimum
+-copy inventory from an apartment to another one or to the ones from a rate
+-fixed bug: dates menus files not created when importing privileges
+-inventory for normal users
+-possibility to move up and down conditions on custom document variales
+-identity document region and city in clients data
+-plain text document format
+-added reservation_repetition_number, carriage_return and new_line document variables
+-fixed bug: error when restoring some condititions from a documents backup
+-set prices to NULL if blank value is inserted in rates table
+
+
+1.1 (26/06/2008)
+======================
+-possibility to delete all messages sent before or after a given date
+-possibility to import templates from a directory to another one
+-possibility to include templates in backup
+-renamed internet templates (removing "template" word for "tpl")
+-possibility to create multiple templates in different directories
+-possibility to delete a single template
+-apartments and stockrooms inventory
+-warning and overwrite when saving a document for a reservation that already has one of the same type
+-all reservations table: clicking on a field selects all rows with the same value (simple theme)
+-title in client's data (linked to gender)
+-codes in lists of cities, regions, nations, documents and relatedness
+-list of cities (with region id)
+-fixed bug: occasionally wrong when checking availability from main menu
+-calculate but do not show extra costs named only with spaces in internet templates
+-statistics page
+-condition to truncate document custom variables (and add characters if length is lower)
+-arithmetic condition with 2 variables in document custom variables
+-possibility to align availability with arrival dates in months table
+-highlight also dates row when mouse is over the month table
+-possibility to save all insert, update and delete queries in a log file
+-possibility to delete a user without reservations, clients, receipts and reservation payments
+-insert and modify rates and extra costs as normal user in privileges
+-see profiles of users in same groups in all reservations table for normal users
+-possibility to see and modify data from users of the same group in privileges
+-possibility to simultaneously modify a group of reservations
+
+
+1.0.1 (20/01/2008)
+======================
+-fixed bug: input not checked when searching client in clients table
+-fixed bug: error when modifying a reservation with close reservations
+-inset prices weekly with a single weekly price with daily periods
+-possibility to import privileges from a user to another user
+-possibility to change settings for all users in "configure and customize"
+
+
+1.0 (06/01/2008)
+======================
+-new menus in simple theme
+-fixed bug: sometimes could not move a reservation with close reservations
+
+
+0.7.2 (26/12/2007)
+======================
+-fixed bug: reservations not imported when creating a new year
+-do not insert or modify a reservation if the rate has negative prices
+-updated simple theme
+-default apartments lists
+-transition from GPL v2 to GPL v3 license (with update proxy)
+
+
+0.7.1 (12/11/2007)
+======================
+-reservation origin
+-separated id from payment method in table with history of reservations payments
+-fiscal code in client's data
+-changed the word "contract" to "document"
+-try to import prices when adding periods
+-extended the maximum number of future months
+-validated all pages as html 4.01 strict
+-extra costs variables repetition for lists in contracts
+-possibility to add inteconnection modules
+-possibility to translate add-on modules
+-if contract is repeated entirely and saved then save 1 contract for each repetition
+-new "if" conditions for contract variables
+-fixed bug: slashes added to surname when inserting new reservations
+-possibility to align days and reservations in availability calendar in templates
+-possibility to view only arrivals or departures in all apartments table
+
+
+0.7 (04/06/2007)
+======================
+-possibility to display currency sign before prices in internet templates
+-nationality, city + region + nation of birth, type + city + nation of document in clients' data
+-lists of nations and regions
+-show the names of wrong extra costs in internet templates
+-possibility to "always" associate an extra cost only in allowed periods
+-possibility to save a contract with a progressive number, available also in the contract
+-possibility to record reservation guests besides titular client
+-added support for sqlite database
+-fixed bug: wrong calculation of the hours to anticipate begun reservations
+-possibility to have temporary reservations while still inserting them
+-possibility to keep 2 or more reservations in close apartments
+
+
+0.6.4 (20/11/2006)
+======================
+-new condition to make operations on numbers in contract variables
+-possibility to duplicate extra costs
+-modify prices directly from rates table
+-pop-up table to choose apartments for assignment rule 2
+-possibility to automatically add extra costs when inserting more than x reservations
+-possibility to automatically add extra costs based on days left from initial date
+-assignment rule 4: insert by default the number of people associated to a rate
+-added internet availability calendar template
+-all internet templates now validate as html 4.01 strict
+-dates row customization in months tables
+-now also normal users can update the database
+-change the number of rates also from prices insertion page
+-change the client of a reservation with another existing one
+-added extra costs to rates internet template
+-possibility to delete all messages
+-possibility to send a copy of the reservation request mail to the client
+-grouped periods in rates table
+-new condition to replace strings in contract variables
+-fixed bug: not italian variables not defined in contracts variables conditions
+-show an arrow for checked-in reservations in apartments, reservations and month table
+-weekly prices insertion now follows the initial week day set in configuration
+
+
+0.6.3 (04/09/2006)
+======================
+-fixed bug: sometimes extra costs where not applied when inserting new reservations
+-fixed bug: deposit and discount where set to 0 when modifying a reservation
+-do not ask for the rate if there is only 1 in internet templates
+
+
+0.6.2 (02/08/2006)
+======================
+-rates table internet template
+-contracts backup
+-reservation code
+-estimated arrival time in all reservations table
+-sum_people, value_all_extra_costs, estimated_arrival_time and num_periods in contracts
+-calendar date pickers
+-moved dates and money format and money names from common data to the specific template page
+-only requests with dates in the future are now possible in availability template
+-fixed bug: not possible to set deposit and discount to 0 when modifying a reservation
+
+
+0.6.1 (31/05/2006)
+======================
+-show also in the database when there is subordination
+-button from availability template to paypal template when present
+-security bug: htmlspecialchars for input from normal users when inserted in database
+-fixed bug: cound not send multiple emails from contracts
+-fixed bug: client data not imported from availability template messages
+
+
+0.6 (23/02/2006)
+======================
+-import prices from a rate to another one
+-choose the number of rows (apartments) after wich show again the dates row in months tables
+-choose to select current reservations by default as customization of reservations table
+-in reservations table use menus' partial dates in arrows when only 1 period is selected
+-show deposit when checking availability
+-possiblity to insert a reservation request in the users' messages from the availability template
+-custom fields in availability template reservation request
+-choose to ask client data, check-in hour and deposit payment method in availability template reservation request
+-estimated check-in time
+-possibility to show until last available date in database in internet templates
+-fixed bug: year privileges not deleted when deleting year
+-update internet templates when creating year or updating database
+-possibility to change the directory where internet templates are created
+-users messages system
+-possibility to consider a contract as a rtf or a template for editable email
+-fixed bug: error with alternate days in extra costs
+-added client region and id, reservation number, rest to pay, last payment and all payments list to contracts
+-possibility to change the number of contracts
+-added custom variables with conditions on other variables to contracts
+-view contracts of shown reservations from all reservations table
+-possibility to set the repetition boundaries in contracts with more reservations
+-contracts with many types and number of reservations
+-moved contracts from files to database
+-possibility to view only 1 method of payment in payments history table
+-logout
+-possibility to modify client's data after inserting or modifying it
+-possibility to replace words of user interface
+-try to free the apartment before deleting it
+-improved performance of assignment function and added to it a time limit
+-moved all includes in includes/ directory
+-client region and identity document
+-conversion to unicode utf-8
+-no permanent connection to database
+
+
+0.5.5 (14/11/2005)
+======================
+-don't show reservations of previous year in all reservations table when all these reservations end
+-possibility to automatically create the new year with the first login of the year of any user
+-possibility to modify a reservation of previous year ending in current year from current year
+-when modifying a reservation, updade also the corresponding next year reservation if present
+-do not permit inserting reservations for next year if asked final date exists in next year
+-delete imported reservations from previous year when importing in new year
+-changed assignation in assignment in english translation
+-possibility to use an extra cost as minimum stay (associate cost if "always" on)
+-fixed bug: couldn't modify permitted periods of extra costs
+-fixed bug: "continue anyway" didn't work when inserting reservations
+-bug: when going back from inserting a reservation, a list of apartmens was selected if a rule 2 rate was
+-possibility to change the day of end/start week with daily periods in tables
+-added small link to show all dates in menus
+-show availability overview in availability template also when requested period is full
+-possibility to show only intervals of dates in some periods in dates menus
+-fixed bug: not possible to restore backups with users with german language
+-fixed bug: no availability overview customization for normal users
+
+
+0.5.4 (08/08/2005)
+======================
+-modify all apartments attributes from one page
+-remember last dates selected when inserting prices
+-auto-update to correct dates in javascript menus
+-subordination with compressed backup
+-Backup compression with gzip
+-free apartments report in availability template
+-link to php-residence home page from default templates
+-free apartments report grouped by people they can host or by rule 2 in availability check
+-possibility to add extra costs of insertion page when checking availability
+-show only available rates when checking availability
+-fixed bug: wrong dates with javascript menus in safari browser
+-changed "fare" to "rate" in english translation
+-fixed bug: not possible to create italian templates from other languages
+
+
+0.5.3 (11/07/2005)
+======================
+-edit contracts from browser
+-dates menus with javascript in simple theme
+-fixed bug: error when inserting "extraordinary" costs
+-default to last values selected in the first page to create internet templates
+-fixed bug: extra costs not deleted when deleting a reservation
+-possibility to modify default phrases in availability template
+-possibility to delete created templates
+-use all default data from availability template if present when creating new template
+
+
+0.5.2 (12/04/2005)
+======================
+-fixed bug: not possible to make new installations
+-use html data from availability template if present when creating new template
+
+
+0.5.1 (09/04/2005)
+======================
+-possibility to move back and forward when only 1 period is selected in all reservations table
+-do not permit insertion of extra cost for selected fares
+-possibility to move already begun reservations in full periods
+-payment method
+-do not show rows where some selected columns are empty in all reservations table
+-possibility to deselect surname, starting and ending date and number in all reservations table
+-hours difference from server time
+-check-in and check-out for reservations
+-added privileges for inserting more reservations at once
+-bug: not possible to insert more reservations at once with fares associated to costs
+-added privileges for deleting confirmed reservations
+-possibility to delete payments history
+-possibility to delete clients without reservations and payments (also all contemporarely)
+-themes to modify aspect
+
+
+0.5 (16/03/2005)
+======================
+-bug: discount bigger than fare when inserting reservation
+-limited number in time of wrong logins (no brute force)
+-possibility to apply extra costs only in some periods
+-possibility to put a limit to the number of an extra cost in week/day
+-possibility to multiply extra costs by number of people (total or not)
+-possibility to associate weekly/daily costs to some specific weeks/days
+-possibility to automatically apply extra costs based on period length
+-possibility to accordingly change extra costs when reservations are changed
+-possibility to ask the number of people in availability template
+-created file includes/costanti.php where some limits and behaviors can be set
+
+
+0.4.5 (03/01/2005)
+======================
+-updated to postgresql version 7.4.5
+-fixed bug: error when creating new year with administrator login enabled
+-fixed bug: not creating dates menus when importing users privileges from previous year
+-fixed bug: reservations not moving in apartments without number of people defined
+
+
+0.4.4 (06/08/2004)
+======================
+-fixed bug: usa dates not available in contracts
+-fixed bug: not calculating extra costs prices when modifying a reservation
+
+
+0.4.3 (29/06/2004)
+======================
+-fixed bug: installation in german continued in english
+-fixed bug: could not create new apartments
+
+
+0.4.2 (21/06/2004)
+======================
+-fixed bug: error when restoring backup from a database type to the other
+-fixed bug: error when importing privileges from previous year
+-fixed bug: allow reservations with number of people in apartments without it
+-eliminated notice warnings when not done in php.ini
+
+
+0.4.1 (12/05/2004)
+======================
+-possibility to consider all apartaments fixed
+-interconnection: subordination to another php-residence installation
+-changed backup.txt in backup.php for security
+-user column in payments history and all reservations tables
+-fixed bug: don't move already present reservations in periods of assignation rules 1
+-import also the privileges and rules 3 from the previous year
+-assignation rule 3: when admin inserts a reservation associate fares with users
+-possibility for admin to change the owner of a reservation or client
+-fixed bug: error when inserting or modifying the street of a client
+
+
+0.4 (23/04/2004)
+======================
+-user privileges
+-secured all includes when admin password activated
+-possibility to change the time when a reservation is considered begun
+-possibility to move a reservation between already assigned apartmens
+-insert and check availability for more reservations at once
+-function arguments not passed by reference in function call
+-locking tables and not files with mysql
+-removed completely auxiliary tables
+-fast access to users layout profiles for admin on table with all reservations
+-user authentication with sessions
+-possibility to change the default html when creating availability template
+
+
+0.3.3 (07/04/2004)
+======================
+-fixed bug: possible error in assignation function
+
+
+0.3.2 (30/05/2003)
+======================
+-translation in spanish
+-possibility to delete years
+-total of differences when changing selected reservations
+-subtotal for selected reservations in table with all reservations
+-insertion date field in table with all reservations
+-extra costs modification page
+-prices table for printing
+-fixed bug: contract variables of other languages not defined
+-fixed bug: when creating template only last fare name is used
+-possibility to add a prefix to all tables
+-improved performance of assignation function (including a bug fixed)
+-sort by different fields the table with all reservations
+-fare name field in table with all reservations
+
+
+0.3.1 (25/02/2003)
+======================
+-current dates selected in table with all reservations
+-fixed bug: slashes in strings when inserting reservations
+-creation of a template page to check availability from internet
+-modular languages (add a dir in includes/lang to add a language)
+-fixed bug: wrong dates in cotracts from "modify reservation" page
+-fixed bug: couldn't see birthdates before 1970 on win32
+-fixed bug: couldn't search clients with mysql
+-unique id for extra costs
+
+
+0.3 (26/11/2002)
+======================
+-workaround for register_globals = off in php.ini
+-motivation for rule 1 and insert reservation from check availability
+-group columns in table with all reservations
+-eliminated some pages when there was only 1 confirmation button
+-checkboxes to mark all or deposit paid from "all reservations" table
+-rows limit in reservations table and history table
+-backup and restore data folders and database
+-possibility to use mysql
+-possibility to use an already created empty database when installing
+-control write permissions on dati folder when installing
+-arbitrary number of fares
+-automatically assign extra costs only to choosen fares
+-different deposit for every fare
+-all includes now begin with ./
+-substituted temporary tables with variables in liberasettimane function
+
+
+0.2.4 (14/06/2002)
+======================
+-fixed bug: possible error in assignation function
+
+
+0.2.3 (30/05/2002)
+======================
+-fixed bug: apartament not fixed for already begun reservations with daily periods
+
+
+0.2.2 (10/04/2002)
+======================
+-compatible with php3
+-possibility to change surnames length in months tables
+-internal changes to assignation rule 1 and assigning function for better performance
+-fixed bug: inserting a new reservation you could choose only the last client of a list
+-fixed bug: not considering old list of apartments when modifying a reservation
+-fixed bug: was unable to free apartment under certain conditions
+-fixed bug: change apartment name also in drop-down menu
+
+
+0.2.1 (18/02/2002)
+======================
+-view contracts from check availibility page
+-search also surnames that contain the inserted one
+-insertion of prices on a weekly basis for daily periods
+-customize dates in drop-down menus
+-possibility to change apartment name
+-yellow color if paid=0 deposit=0 and confirmed
+
+
+0.2 (04/01/2002)
+======================
+-traduzione in inglese
+-lock tabelle durante transazioni di inserimento e modifica
+-prenotazioni giornaliere
+-soldi con decimali e formato personalizzabile
+-costi aggiuntivi nel contratto
+-costi settimanale e finale come letto aggiuntivo
+-tabella storia entrate-uscite
+-assegnazione appartamenti in base alla tariffa (regola 2)
+-possibilità eliminare appartamenti
+-personalizzazione nomi contratti
+-personalizzazione tabella prenotazioni
+-costi aggiuntivi infiniti
+-motivazione regola di assegnazione 1
+-conferma prenotazione
+-controllo disponibilità in appartamenti con dato numero di persone
+-cambio disposizione cartelle anni e dati
+-passagio di tutti i file .inc a .php
+-creata la cartella contr
+-altre piccole modifiche
+
+
+0.1.2 (16/06/2001)
+======================
+-Visualizzazione prenotazioni tra due date
+-Creato aggiorna.php per aggiornare da versioni precedenti
+-Ricerca per cognome del cliente nella tabella clienti
+-Prenotazioni di tutti gli anni in modifica_cliente.php
+-Creato il changelog

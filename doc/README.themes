@@ -1,0 +1,19 @@
+
+INSTRUCTIONS TO CREATE A NEW THEME
+
+To create a new hoteldruid theme make a copy of the "sim" 
+directory inside the "themes" directory of hoteldruid and 
+rename it with a new name of 3 letters. Then edit the theme 
+names in the "name.php" file inside the "php" subdirectory of 
+the new theme. Now you will be able to select the new theme 
+from "configure and customize".
+
+In the "php" subdirectory you have the files that are actually 
+used by hoteldruid. You can modify the head and foot of all 
+hoteldruid pages from "head.php" and "foot.php" files. In 
+file "menu.php" you can set the variable $hide_default_menu to 
+true and insert there a new main menu page. Lastly the dates 
+lists are generated from the file "selectperiod.php".
+
+The other subdirectories are optional and you can delete or 
+modify them as needed by your theme.

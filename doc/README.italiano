@@ -1,0 +1,358 @@
+
+###################################################
+#                                                 #
+#  HotelDruid non ha ALCUNA GARANZIA; vedere il   #
+#           file COPYING per i dettagli.          #
+#                                                 #
+###################################################
+
+HOTELDRUID versione 2.2.3
+Programma per la gestione di camere di hotel o di affitti 
+settimanali e giornalieri di appartamenti.
+
+http://www.hoteldruid.com
+
+
+SICUREZZA
+Se hoteldruid viene utilizzato in un ambiente di rete non 
+sicuro e' consigliabile attivare la password dell'utente 
+amministratore ed eventualmente utilizzare connessioni ssl.
+Non vi dovrebbero essere problemi se piu' computer accedono 
+contemporaneamente al database e gli utenti normali non 
+dovrebbero poter compiere azioni non consentitegli dai privilegi 
+loro assegnatigli.
+
+
+ATTENZIONE
+E' consigliabile custodire tutti i dati anche in modi piu' 
+sicuri e fare frequenti backup su file del database 
+utilizzando il sistema di backup di hoteldruid.
+
+
+REQUISITI SOFTWARE
+-apache (>=1.3.26) o altro web server che supporti php
+-php (>=3.0.18) con estensione per postgresql, mysql o sqlite3
+-postgresql (>=7.4.7) o mysql (>=4.1.11) o sqlite (>=3.7.9)
+-un browser che supporti html 4.01 con encoding utf-8
+
+Le versioni indicate sono quelle che sono state provate, 
+potrebbe funzionare anche su quelle anteriori. Il programma e' 
+stato provato solo su Linux, in teoria dovrebbe funzionare anche 
+su altri sistemi operativi che supportino i programmi 
+precedenti.
+CONFIGURAZIONE DI APACHE: Apache deve avere il supporto per 
+php ed eseguire con esso le pagine con estensione .php. Cio' 
+normalmente e' gia' predisposto per php4, mentre per php3 si 
+dovrebbe aggiungere la riga:
+
+AddType application/x-httpd-php3 .php
+
+nei file di configurazione di Apache (httpd.conf o srm.conf).
+CONFIGURAZIONE DI MYSQL: Per creare un utente in mysql 
+collegarsi al database mysql come root (comando 
+"mysql --user=root mysql") ed eseguire la query: 
+
+GRANT ALL PRIVILEGES on nomedatabase.* to utente@localhost IDENTIFIED BY 'pass';
+
+sostituendo rispettivamente nomedatabase, utente e pass con i 
+vostri dati.
+CONFIGURAZIONE DI POSTGRESQL: assicurarsi che il server 
+postgres sia avviato con l'opzione per permettere collegamenti 
+via TCP/IP (in Debian 9 porre "listen_addresses = 'localhost'" 
+in /etc/postgresql/x.x/main/postgresql.conf, in Red Hat 7.2 porre 
+"tcpip_socket = true" in /var/lib/pgsql/data/postgresql.conf). 
+Inoltre devono essere settati i permessi giusti nel file 
+pg_hba.conf (di solito vanno bene quelli di default). Per creare 
+un utente in postgresql utilizzare il comando 
+"createuser -d -P nome_utente" da utente postgres ("su postgres" 
+da root).
+CONFIGURAZIONE DI SQLITE: il database sqlite in realtà è un file 
+che risiede nella cartella dati, quindi se si utilizza una 
+versione 5.3 o superiore di php non c'è bisogno di nessuna 
+configurazione speciale. Tra i dati per il collegamento al 
+database non c'è bisogno di inserire nome utente, password ed il 
+nome del server.
+
+
+INSTALLAZIONE
+Copiare la cartella hoteldruid sotto una directory 
+raggiungibile dal web (DocumentRoot nei file di configurazione 
+di apache), e puntare il browser su 
+http://localhost/hoteldruid/inizio.php (o dove avete 
+posizionato la cartella). La directory dati all'interno di 
+hoteldruid deve essere accessibile in scrittura dall'utente 
+con cui gira il server web (utente www-data in Debian), anche 
+dopo l'installazione. Quindi se si usa un servizio di hosting 
+potrebbe essere necessario cambiarli via ftp: per esempio con 
+cuteftp (win) o gftp (linux) connettersi e cliccare col tasto 
+destro sulla cartella dati sul server (colonna di destra), 
+scegliere l'opzione CHMOD e aggiungere i permessi di 
+scrittura (755 o 777).
+Dopo la schermata iniziale, dove si potra' scegliere la linga 
+italiana, si dovranno inserire i dati per collegarsi al 
+database, alcuni dei quali sono gia' presenti con valori che 
+dovrebbero andar bene nella maggior parte dei casi. La password 
+e' necessaria solo se abilitata nel server postgres o mysql. In 
+Debian con php3 rispondere si alla domanda riguardante 
+l'estensione "pgsql.so". Dopo aver inserito i dati sugli 
+appartamenti (almeno il numero), si dovra' creare l'anno che si 
+intende gestire (si potranno in seguito aggiungere al periodo 
+scelto dei mesi alla fine ma non toglierne). Se esiste l'anno 
+precedente si possono importare eventuali prezzi e prenotazioni 
+riguardanti mesi in comune. Alla fine si arriva alla facciata 
+principale, che penso sia abbastanza intuitiva. Prima di poter 
+inserire delle prenotazioni si dovranno inserire i prezzi dei 
+relativi periodi.
+
+Per la disinstallazione cancellare la directory hoteldruid
+e distruggere il database creato (destroydb nomedatabase o 
+dropdb nomedatabase a seconda della versione per postgresql).
+
+
+AGGIORNAMETO DA VERSIONI PRECEDENTI
+Prima di aggiornare e' opportuno fare un backup del database  
+con il sistema di backup di hoteldruid e salvare il file 
+hoteld_backup.php, pena la PERDITA DI TUTTI I DATI! Controllare 
+anche che i nuovi requisiti software siano compatibili con 
+quelli attuali.
+Lasciare nella cartella dove e' installato hoteldruid o 
+php-residence solo la cartella dati (sempre con i permessi di 
+scrittura per il web server), cacellando tutto il resto. 
+Copiarci poi i files della nuova versione (tranne la cartella 
+dati naturalmente) e PER PRIMA COSA accedere al menu' principale 
+(come utente amministratore se il login e' attivato) e premere 
+il tasto "aggiorna" attendendo che si finisca di caricare la 
+pagina. Se si usano moduli o temi aggiuntivi ricordarsi di 
+copiare anche essi con i files della nuova versione.
+E' possibile passare dall'utilizzo di un database postgresql a 
+uno mysql o viceversa utilizzando il sistema di backup. 
+
+Se si utilizza sqlite come database, l'aggiornamento ad una nuova 
+versione non è supportato da versioni precedenti alla 2.0. Per 
+le versioni precedenti alla 2.0 si dovrà prima passare ad un 
+database mysql o postgresql con il sistema di backup.
+
+Se si utilizza una versione di mysql inferiore alla 4.1 si 
+raccomanda di creare un file di backup prima di aggiornare mysql 
+ad una versione uguale o superiore alla 4.1 e di ripristinare 
+tale file subito dopo.
+
+Per chi aggiorna da una versione precedente alla 1.1 i modelli 
+internet eventualmente presenti nelle loro posizioni predefinite 
+saranno rinominati. Ache file con i vecchi nomi che richiamano i 
+contenuti dei file con i nuovi nomi saranno creati , ma si 
+raccomanda di aggiornare i link nel resto del proprio sito per 
+farli puntare ai nuovi nomi.
+
+Per chi aggiorna da una versione precedente alla 0.2 le cartelle 
+da lasciare sono datipermanenti e le cartelle degli anni, poi si
+deve creare la cartella contr  e trasferirvi i contratti 
+rinominandoli da contratto1.php a contr01.php, ecc.
+
+
+CONSIGLI
+-Utilizzare i tasti del browser per tornare indietro dopo la 
+ visualizzazione di un documento. 
+-Inserire sempre numeri con al massimo 2 decimali come soldi. 
+ Per separare i decimali si puo' utilizzare la virgola o il
+ punto, ma NON separare le migliaia.
+-Se non si inserisce nessun metodo per l'assegnazione di un 
+ appartamento in una prenotazione il programma assegnera'
+ automaticamente l' appartamento tenendo conto del numero di 
+ persone e delle priorita' degli appartamenti (piu' bassa e' e 
+ prima viene assegnato).
+-Le prenotazioni gia' iniziate e quelle con orario di entrata 
+ registrato vengono considerate fisse. Per spostare quelle gia' 
+ iniziate viene offerta una opzione qunado si tenta di muoverle 
+ in appartamenti non vuoti.
+-La regola di assegnazione 1 puo' essere usata per appartamenti
+ riservati ad agenzie che devono essere informate in caso di 
+ prenotazione.
+-Con la regola di assegnazione 2 si puo' per esempio associare 
+ una tariffa soprannominata "4 persone" agli appartamenti che
+ possono ospitare 4 persone.
+-Se non si vuole che il programma assegni automaticamente 
+ gli appartamenti basta assegnare sempre a tutte le 
+ prenotazioni un appartamento fisso.
+-Si puo' assegnare un prezzo diverso per ogni periodo anche se 
+ nella pagina di inserimento prezzi ve ne sono solo 8 (se ne 
+ inseriscono 8 alla volta).
+-Se si opera tra 2 anni non creare il nuovo anno fino a quando
+ non inizia, ma continuare ad inserire le prenotazioni dell'
+ anno successivo dal menu' dell'anno corrente, eventualmente si
+ possono aggiungere i periodi necessari. Quando poi arriva il
+ nuovo anno crearlo importando le prenotazioni dall'anno
+ precedente (per fare cio' si devono utilizzare gli stessi tipi
+ di periodi dell'anno precedente e se i periodi sono 
+ settimanali anche lo stesso giorno di inizio/fine settimana).
+ Si consiglia di lasciare attivata l'opzione in "configura e 
+ personalizza" per creare il nuovo anno in automatico il 10 
+ Gennaio.
+-Per il nome degli appartamenti usare per esempio 07 o 007 
+ invece di 7 per avere delle tabelle dei mesi ordinate.
+-Il browser raccomandato per il back-office è mozilla firefox o 
+ qualsiasi altro browser basato su mozilla (www.mozilla.org).
+-Si possono aggiungere nuovi utenti disattivati e cambiare le 
+ loro colonne selezionate nella pagina delle personalizzazioni 
+ per avere profili diversi nella tabella con tutte le 
+ prenotazioni.
+-Se le stanze di solito vengono pulite il giorno prima 
+ dell'arrivo dei clienti nella pagina della personalizzazioni si 
+ puo' cambiare il momento in cui le prenotazioni vengono 
+ considerate cominciate in modo che non vengano piu' spostate.
+-Se si usa hoteldruid via internet, si puo' installarne una 
+ copia anche sul computer di casa e subordinarla (da configura 
+ --> interconnessioni) alla installazione su internet nel caso 
+ in cui la connessione sia temporaneamente non disponibile.
+
+
+INSERIMENTO DEI DOCUMENTI
+Da "configura e personalizza", cliccando sul loro numero, si 
+possono editare i testi dei documenti da stampare, salvare o 
+inviare come email. I testi vanno inseriti in formato HTML, RTF, 
+o in testo semplice per spedire email. Dopo l'installazione di 
+hoteldruid saranno presenti alcuni esempi di documenti già 
+utilizzabili. Per inserire facilmente un documento RTF scrivete 
+prima il testo con il vostro programma preferito (per esempio 
+Word o OpenOffice), salvate il file in formato RTF e riapritelo 
+con un editor di testi, copiate poi tutto il testo ed 
+incollatelo nel documento.
+Nei documenti si possono utilizzare delle variabili predefinite 
+che se vuote verranno sostituite da spazi da riempire. Le parti 
+di documento all'interno dei tag [r][/r] verranno ripetute per 
+ogni prenotazione (se i tag non sono presenti tutto il documento 
+verrà ripetuto). All'interno di queste parti si possono inserire 
+delle liste con i tag [r2][/r2] (per ospiti) o [r3][/r3] (per 
+costi aggiuntivi). Per esempio per la lista con i dati degli 
+ospiti le variabili finiscono tutte col suffisso "_ospite".
+Alcune variabili disponibili che si possono inserire sono (la 
+lista completa è nella pagina di modifica dei documenti):
+
+Dati del cliente:
+[cognome]		cognome
+[nome]			nome
+[data_nascita]		data di nascita
+[il]			'il' (maschile) o 'la' (femminile)
+[Il]			'Il' (maschile) o 'La' (femminile)
+[al]			'al' (maschile) o 'alla' (femminile)
+[e]			'e' (maschile) o 'a' (femminile)
+[o]			'o' (maschile) o 'a' (femminile)
+[Mr]			'' (maschile) o 's' (femminile)
+[nazione]		nazione di provenienza
+[citta]			citta' di residenza
+[via]			via
+[via2]			come $via ma inserisce la parola via
+			davanti agli spazi se non e' definita
+[numcivico]		numero civico
+[cap]			codice di avviamento postale
+[telefono]		numero di telefono
+[telefono2]		secondo telefono
+[telefono3]		terzo telefono
+[fax]			numero di fax
+
+Dati della prenotazione:
+[num_persone]		numero di persone
+[n_letti_agg]		letti aggiuntivi dei costi
+[num_persone_tot]	numero di persone + letti aggiuntivi
+[costo_tot]		prezzo totale
+[caparra]		caparra
+[resto_caparra]		prezzo totale - caparra
+[data_inizio]		data di arrivo
+[data_fine]		data di partenza
+[nome_tariffa]		nome della tariffa
+[costo_tariffa]		prezzo senza costi aggiuntivi e sconto
+[sconto]		sconto
+[commento]		commento
+[unita_occupata]	numero della camera o appartamento
+[unita_assegnabili]	lista delle camere o appartamenti  
+			assegnabili, separati da virgole
+[pagato]		quanto e' stato pagato finora
+[tutti_i_costi_agg]	lista con tutti i costi aggiuntivi con i
+			rispettivi valori
+[nome_costo_agg_sel]	nome del costo aggiuntivo selezionato 
+			prima di vedere il documento
+[valore_costo_agg_sel]	valore del costo aggiuntivo selezionato
+			prima di vedere il documento
+[oggi]			data odierna
+[costo_tot_p],		come i precedenti senza _p finale ma 
+[caparra_p],[pagato_p],	formattati con punti e virgole per 
+[resto_caparra_p],	decimali e migliaia
+[costo_tariffa_p],
+[sconto_p],
+[tutti_i_costi_agg_p],
+[valore_costo_agg_sel_p]
+
+[errore_ripetizione]	quando non nulla la prenotazione 
+			corrente non viene aggiunta al documento
+[email_gia_inviata]	1 se una email con stesso oggetto è già 
+			stata inviata al cliente, 0 altrimenti
+[messaggio_di_errore]	quando non nulla il suo contenuto viene 
+			mostrato al posto del documento
+
+Inoltre si possono creare delle variabili personalizzate del 
+tipo [var] o anche array del tipo [var1(var2)]. Per assegnare ad 
+un array un valore fisso all'interno del documento si può usare 
+la notazione [var1('valore')].
+
+
+PAGINE PER IL SITO WEB
+E' possibile creare delle pagine da inserire in un sito 
+internet, per esempio per permettere ai visitatori di 
+controllare la disponibilita' ed eventualmente richiedere di 
+prenotare via email. Si accede alla creazione delle pagine da 
+"Configura e personalizza".
+I files possono essere creati direttamente nella loro posizione 
+finale impostando la directory dove vengono creati in "configura 
+e personalizza". In questo modo la pagine verranno 
+automaticamente aggiornate quando si crea un nuovo anno o quando 
+si aggiorna il database. Se si sposta la pagina su un altro sito 
+web (sempre con supporto per php), questa dovrà potere accedere 
+comunque al database con i dati forniti al momento della sua 
+creazione.
+Si puo' inserire l'html all'inizio e alla fine del file, potendo 
+cosi' per esempio racchiudere la form di disponibilita' in una 
+tabella o all'interno della struttura di una pagina del proprio 
+sito. Ricreando il file si possono modificare tutte le opzioni e 
+le frasi della form inserite in precedenza.
+Le pagine per il sito web possono essere visualizzate in 
+modalità frame aggiungedo ?framed=1 alla loro URL, in questo 
+modo verrà mostrata una versione semplificata della pagina 
+personalizzabile con un file css esterno. Questa modalità può 
+essere utilizzata per esempio per avviare le richieste di 
+disponibilità in un riquadro (iframe) all'interno di altre 
+pagine del sito. Se si aggiunge anche &blank=1 alla URL la form 
+si aprirà in una nuova finestra.
+
+
+GESTIONE UTENTI
+Si puo' accede alla gestione degli utenti dalla pagina "Configura 
+e personalizza". Nuovi utenti possono essere utilizzati per dare 
+accesso diretto ad agenzie da parte del proprietario, o da una
+agenzia per dare la possibilita ai proprietari di controllare la
+disponibilita e bloccare periodi. 
+Si possono limitare gli appartamenti che un utente puo' 
+utilizzare in due modi: o facendo in modo che possa inserire 
+prenotazioni solo nei periodi selezionati della regola di 
+assegnazione 1, oppure facendo in modo che possa utilizzare solo 
+tariffe abbinate a determinati appartamenti tramite la regola di 
+assegnazione 2 e che non possa ne' inserire ne' modificare 
+l'assegnazione degli appartamenti.
+Se viene dimenticata la password dell'utente amministratore si 
+puo' cancellare il file abilita_login all'interno della directory 
+dati, in questo modo verra' disabilitato il login iniziale e 
+chiunque potra' accedere con i privilegi dell'utente 
+amministratore.
+
+
+RINGRAZIAMENTI
+Grazie a Stan Khodjaev di icojam.com per aver rilasciato i set di 
+icone "Marmalade", "Blue Bits" e "Blueberry" nel dominio pubblico.
+
+
+LICENZA D'USO
+Vedere il file COPYING.
+
+
+AUTORE
+Marco M. F. De Santis 
+Email: marco@digitaldruid.net

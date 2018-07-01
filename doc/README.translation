@@ -1,0 +1,32 @@
+
+INSTRUCTIONS TO TRANSLATE HOTELDRUID
+
+To translate hoteldruid to another language duplicate the directory
+/includes/lang/en renaming it to the acronym of the new language
+(maximum 3 letters). After that change the full name of the language in
+the file l_n inside that directory.
+
+Now you should be able to choose the new language when installing or
+from "Configure and customize", but naturally it will still display
+messages in English. To change them you must edit all files in the new
+language directory changing the phrases in english between quotation
+marks (right column) with their translations. Remember that you must
+always use \" instead of " and \$ instead of $. See comments in the
+files (lines that begin with #) for special cases. As you change 
+phrases in the files you can see how they change also in the 
+corresponding pages in the browser.
+
+The files are encoded with unicode utf-8, so you shold use a text 
+editor that supports this encoding. For example in Linux you can use 
+Kate that supports saving in utf-8 even if that's not set as your 
+default locale.
+
+Please check if a translation for your language already exists on the 
+hoteldruid website, in this case you can download it and eventually 
+edit it to translate only the phrases that are still in English (you 
+will find them at the end of each file).
+
+If you make a translation in your own language feel free to send it to
+me at marco@digitaldruid.net under the GPLv3 license, so I can put it 
+on hoteldruid website for download.
+

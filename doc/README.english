@@ -1,0 +1,341 @@
+
+##########################################################################################
+#    HOTELDRUID									         #
+#    Copyright (C) 2001-2018 by Marco Maria Francesco De Santis (marco@digitaldruid.net) #
+#										         #
+#    This program is free software: you can redistribute it and/or modify	         #
+#    it under the terms of the GNU Affero General Public License as published by         #
+#    the Free Software Foundation, either version 3 of the License, or		         #
+#    any later version accepted by Marco Maria Francesco De Santis, which	         #
+#    shall act as a proxy as defined in Section 14 of version 3 of the		         #
+#    license.									         #
+#										         #
+#    This program is distributed in the hope that it will be useful,		         #
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of		         #
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		         #
+#    GNU Affero General Public License for more details.			         #
+#										         #
+#    You should have received a copy of the GNU Affero General Public License	         #
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.	         #
+##########################################################################################
+
+HotelDruid version 2.2.3
+Program for hotel rooms management or weekly and daily rental 
+of apartments.
+
+http://www.hoteldruid.com
+
+
+SECURITY
+If hoteldruid is used in an insecure net environment it's 
+advisable to activate the password of administrator user and 
+eventually use ssl connections.
+There shouldn't be problems if more computers access the 
+database simultaneously and normal users will not be able to 
+perform actions not permitted by privileges assigned to them.
+
+
+WARNING
+It's advisable to secure all data and make frequent backups 
+of the database using the backup system supplied in 
+hoteldruid.
+
+
+REQUIRED SOFTWARE
+-apache (>=1.3.26) or another web server that supports php
+-php (>=3.0.18) with extension for postgresql, mysql or sqlite3
+-postgresql (>=7.4.7) or mysql (>=4.1.11) or sqlite (>=3.7.9)
+-a browser that supports html 4.01 with utf-8 encoding
+
+The indicated versions are the tested ones, it could work also 
+on the percedent ones. The program has been tried only on Linux, 
+in theory it should work also on other operating systems that 
+support the previous programs.
+APACHE CONFIGURATION: Apache must have php support and execute 
+with it the pages with php extension. That normally is the 
+default for php4, while for php3 you could have to add the line: 
+
+AddType application/x-httpd-php3 php
+
+in the configuration file of Apache (httpd.conf or srm.conf). 
+MYSQL CONFIGURATION: in order to create a user in mysql connect 
+to the mysql database (command "mysql --user=root mysql") and 
+execute this query:
+
+GRANT ALL PRIVILEGES on databasename.* to user@localhost IDENTIFIED BY 'pass';
+
+changing databasename, user and pass with your data.
+POSTGRESQL CONFIGURATION: make sure that the postgres server 
+is started with the option in order to allow connections 
+via TCP/IP (in Debian 9 put "listen_addresses = 'localhost'" in 
+/etc/postgresql/x.x/main/postgresql.conf, in Red Hat 7.2 put 
+"tcpip_socket = true" in /var/lib/pgsql/data/postgresql.conf). 
+Moreover you must have the right permissions in the file 
+pg_hba.conf (normally you don't need to change the default 
+ones). In order to create a user in postgresql use the command 
+"createuser -d -P user_name" issued by user postgres ("su 
+postgres" from root).
+SQLITE CONFIGURATION: the sqlite database is actually a file 
+that resides in the dati folder, so if you're using php version 
+5.3 or superior there is no need for any special configuration. 
+In the data to connect to the database you don't need to insert 
+the username, password and server name.
+
+
+INSTALLATION
+Copy the folder hoteldruid to a directory 
+reachable from the web (DocumentRoot in the configuration 
+files of apache), and point the browser at 
+http://localhost/hoteldruid/inizio.php (or where you have 
+positioned the folder).  The dati directory inside 
+hoteldruid MUST have write permissions for the 
+user with which the server web runs (user www-data in Debian),
+also after the installation. So if you use a hosting service 
+they could have to be changed through ftp: for example with 
+cuteftp (win) or gftp (linux) connect and right click the dati 
+directory on the server (right column), choose the CHMOD option 
+and add write permissions (755 or 777).
+After the first screen, where you can choose the language, you 
+insert the data to connect to the database, default values are 
+already filled in  that should be right in the majority of cases. 
+The password is only necessary if activated in the postgres or 
+mysql server. In Debian with php3 answer yes to the question 
+regarding the extension "pgsql.so". After having inserted 
+the data about the apartments (at least the number), you must 
+create the year that you want to manage (later on you can add 
+months at the end of the period you choose now, but not remove 
+any). If a previous year exists you can import prices and any 
+reservations in months common to the 2 years. At the end you 
+arrive to the main screen, that I think is quite intuitive. 
+Before being able to insert reservations the prices for the 
+relative periods will need to be inserted.
+
+To uninstall delete the directory hoteldruid and destroy 
+the created database ("destroydb databasename" or 
+"dropdb databasename" depending on the version for postgresql).
+
+
+UPGRADING FROM PREVIOUS VERSIONS
+Before upgrading you should make a backup of the database 
+with the hoteldruid backup system and save hoteld_backup.php,
+otherwise you could LOSE ALL DATA! Also check that the new 
+required software is compatible with your current one.
+Leave in the folder where hoteldruid or php-residence is 
+installed only the folder dati (with write permission for the 
+web server) deleting all the rest. After that, copy the files of 
+the new version (except the folder dati naturally) and BEFORE 
+ANYTHING ELSE access the main menu (as administrator user if the 
+login is activated) and press the "update" button waiting until 
+it ends to load the page. If add-on modules or themes are used 
+remember to copy them too with the new version files.
+It's possible to change from a postgresql database to a mysql 
+one or vice versa using the backup system.
+
+If you're using a sqlite database, upgrading to a new version 
+is not supported for HotelDruid versions before 2.0. If you have 
+an earlier version, firstly you'll have to move to a mysql or 
+postgresql database with the backup system.
+
+If you're using a mysql version inferior to 4.1 it's recommended 
+to create a backup file before upgrading mysql to a version 
+equal or superior to 4.1 and to restore that file just after it.
+
+If you are upgrading from a version prior to 1.1 then internet 
+templates evetually present in their default locations will be 
+renamed. Files with the old names including the contents of the 
+files with the new names will be created too, but it's 
+recommended to update the links in the rest of your site to 
+point to the new names.
+
+
+TIPS
+-Use the buttons of the browser in order to return from the
+ visualization of a document.
+-Always insert numbers with a maximum of 2 decimals as currency. 
+ In order to separate decimals you can use a comma or a point,
+ but don't separate the thousands.
+-If no method for the assignment of an apartment is inserted 
+ in a reservation, the program will automatically assign the 
+ apartment taking into account the number of people and the 
+ priority of the apartments (lower priority is assigned 
+ first).
+-Already begun and checked-in Reservations are considered fixed.
+ To move those already begun, an option is offered when you 
+ try to move them in non empty apartments.
+-the assignment rule 1 can be used for apartments reserved to 
+ agencies that must be informed in case of a reservation. 
+-With the assignment rule 2 you can for example associate a 
+ rate called "4 people" to the apartments that can accommodate 
+ 4 people. 
+-If you don't want the program to automatically assign the 
+ apartments insert all the reservations in a fixed apartment. 
+-You can assign a different price for each period even if there 
+ are only 8 periods in the prices insertion page (insert 8 
+ each time).
+-If you work between 2 years don't create the new year until 
+ it actually begins. You can insert reservations of the next 
+ year from the menu of the current year, extra months can be 
+ added by selecting the rates table and using the 'Add Periods' 
+ button. When the new year arrives create it and import the 
+ reservations from the previous year (to do that the same types 
+ of periods of the previous year must be used and if  the 
+ periods are weekly also the same starting/ending day of the 
+ week). It is recommended to keep atcivated the option in 
+ "configure and customize" to automatically create the new year 
+ on January the 10th.
+-For the apartments names use for example 07 or 007 instead of 
+ 7 to have ordered months tables. 
+-The recommended browser is mozilla firefox or any other mozilla 
+ based browser (www.mozilla.org).
+-New disabled users can be added, and their selected columns in 
+ the customizations page changed, for having different profiles 
+ in the table with all the reservations.
+-If the rooms are usually cleaned the day before the client 
+ arrives, in the customization page, the time when a reservation 
+ is considered to have started can be changed so it doesn't get 
+ moved.
+-If hoteldruid is used from the Internet, a copy can be 
+ installed also on your home computer and subordinated (from 
+ configure -> interconnections) to the Internet installation in 
+ case the connection is temporarily unavailable.
+
+
+INSERTION OF DOCUMENTS
+From "configure and customize", clicking on their number, you 
+can edit the texts of documents to be printed, saved or emailed. 
+The texts must be inserted in HTML or RTF format, or in simple 
+text to send emails. You'll find some examples of alredy usable 
+documents after intalling hoteldruid. To easily insert an RTF 
+document you can write the text in your preferred program (like 
+Word or OpenOffice), save it in RTF format and reopen it with a 
+text editor, then copy all the text and paste it in the 
+document. 
+In the documents you can use predefined variables that, if left 
+empty, will be replaced by spaces to be filled up by hand. The 
+document parts that are enclosed in [r][/r] tags will be 
+repeated for each reservation (if these tags are not present the 
+whole document will be repeated). Inside these parts other lists 
+can be inserted with tags [r2][/r2] (for guests) or [r3][/r3] 
+(for extra costs). For example for the list with guests data the 
+variables end all with the "_guest" suffix. Some available 
+variables that can be inserted are (the complete list is in the 
+page where you modify the document): 
+
+Client's data:
+[surname]		surname
+[name]			name
+[birthdate]		birthday
+[Mr]			'' (if male) or 's' (if female)
+[nation]		origin nation
+[city]			residence city
+[street]		street
+[street2]		the same as $street but if it's not 
+			defined it inserts the word street 
+			before the spaces
+[street_number]		street number
+[postal_code]		postal code
+[telephone]		telephone number
+[telephone2]		second telephone
+[telephone3]		third telephone
+[fax]			fax number
+
+Reservation's data:
+[people_num]		number of people
+[extra_beds_num]	number of extra beds from the costs
+[people_num_tot]	number of people + extra beds
+[price_tot]		complete price
+[deposit]		deposit
+[deposit_rest]		complete price - deposit
+[starting_date]		starting date
+[ending_date]		departure date
+[rate_name]		rate name
+[rate_price]		price without extra costs and discount
+[discount]		discount
+[comment]		comment
+[occupied_unit]		room or apartment number
+[units_list]		list of rooms or apartments that can be  
+			assigned, separated by commas
+[paid]			what has been paid until now
+[all_extra_costs]	list with all the extra costs and their
+			respective values
+[sel_extra_cost_name]	name of the extra cost selected before 
+			viewing the document
+[sel_extra_cost_value]	value of the extra cost selected before
+			viewing the document
+[today]			today date
+[price_tot_p],		as the previous ones without final _p  
+[deposit_p],[paid_p],	but formatted with points or commas  
+[deposit_rest_p],	between thousands and decimals
+[rate_price_p],
+[discount_p],
+[all_extra_costs_p],
+[sel_extra_cost_value_p]
+
+[repetition_error]	when not empty the current reservation 
+			is not added to the document
+[email_already_sent]	1 if an email with the same subject has 
+			already been sent to client, otherwise 0
+[error_message]		when not empty its contents are shown 
+			instead of the document
+
+In addition, you can also create custom variables like [var] or 
+arrays like [var1(var2)]. To assign a fixed value to an array 
+within the document you can use the notation [var1('value')].
+
+
+WEBSITE PAGES
+Pages can be created to be inserted in an internet site, for 
+example to allow the visitors to check availability and to ask 
+to reserve by email. You can access the creation of the 
+paes from the "Configure and customize" button on the 'Main 
+Menu' page.
+You can create the files directly at their final position by 
+setting the target directory in "configure and customize". This 
+way the pages will be automatically updated at new year 
+creation and on database upgrades. If you move the page to 
+another website (always with php support), it will have to be 
+able in any case to access the database with the data inserted 
+at its creation.
+You can insert the html at the beginning and the end of the 
+file, so you are able for example to enclose the availability 
+form in a table or inside the body of a page from your website. 
+Creating again the file you can modify all the settings and the 
+form phrases previously inserted.
+The website pages can be viewed in framed mode by adding 
+?framed=1 to their URLs, this way a simplified version of the 
+template, that can be customized with an external css file, will 
+be shown. This mode can be used for example to start 
+availability requests from a box (iframe) inside other pages of 
+the website. If you also add &blank=1 to the URL the form will 
+be opened in a new window.
+
+
+USERS MANAGEMENT
+Users management can be accessed from the "Configure and customize" 
+page. New users can be used for giving direct access to agencies 
+by the owner, or by an agency for giving the possibility to the 
+owners to check availability and block periods.
+You can limit the apartments that a user can use in two ways: by 
+allowing him to insert reservations only in selected periods of 
+assignment rule 1, or by allowing him to use only rates related 
+to some apartments by the assignment rule 2 and not allowing 
+him to insert or modify the assignment of the apartments.
+If the administrator password gets lost you can delete the file 
+abilita_login inside the dati directory, this way the login will 
+be disabled and anybody will be able to access with 
+administrator user privileges.
+
+
+THANKS
+Thanks to Stan Khodjaev from icojam.com for releasing the 
+"Marmalade", "Blue Bits" and "Blueberry" icon set into the public 
+domain.
+
+
+LICENSE 
+See file COPYING.
+
+
+AUTHOR
+Marco M. F. De Santis
+Email: marco@digitaldruid.net
