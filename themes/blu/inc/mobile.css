@@ -1,0 +1,49 @@
+
+
+a.nav, a.nav:visited, a.nonav, a.nonav:visited { padding: 6px 2px 7px 2px; }
+.drop ul ul a { padding: 7px 0 8px 0; }
+.drop ul ul li:last-child a { padding: 7px 0 7px 0; }
+.drop ul ul { top: 26px; }
+
+#nb_res:hover { background-color: transparent; }
+
+table.nomob tr td, #mm_act tr td, #ir_dat tr td { display: inline-block; }
+table.t1 a, table.me1 a, table.usrs a { display: inline-block; padding-top: 3px; padding-bottom: 3px; }
+.tab_cont { overflow-x: scroll; padding-bottom: 6px; }
+
+#aziobar { white-space: nowrap; }
+
+hr.pos { width: 300px; }
+
+
+
+@media only screen and (max-width: 480px) {
+
+.opt { display: none; }
+#mmenu { background-image: none; }
+table.vmon { width: 240px; }
+table.vtab { width: 270px; min-height: 46px; }
+span.smlscrfnt { font-size: 75%; }
+button.smlscrfnt div { font-size: 75%; padding-top: 10px; padding-bottom: 10px; }
+.canc_vsmlscr { display: none }
+.nb_res ul ul { left: auto; right: 0; }
+.widetxt { width: 280px; }
+
+}
+
+
+@media only screen and (max-width: 720px) {
+
+.opt2 { display: none; }
+.smlscr { display: inline; }
+table.t1 tr td { padding: 0; }
+table.t1  { width: 4px; }
+table.m1 tr td { padding: 0; height: 12px; }
+.pren table { padding: 0; }
+hr.pos { width: 70px; }
+.buttonbar td { float: left; padding-bottom: 4px; padding-right: 8px; }
+
+}
+
+
+
