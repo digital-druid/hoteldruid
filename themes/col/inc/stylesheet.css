@@ -1,0 +1,308 @@
+
+html,body { margin: 0; padding: 0; border: none; }
+html { height: 100%; }
+body { min-height: 100%; }
+
+#menubox {
+float: none; margin-right: 4px; margin-left: 4px; border-top-style: solid;
+border-top-width: 4px; border-top-color: #dddddd; }
+#contentbox {
+border-style: solid; border-width: 1px; border-color: black;
+height: 96%; line-height : 1; background-color: white;
+margin-right: 4px; margin-left: 4px; padding-left: 4px; }
+
+
+table.nav_bar { padding: 0; text-align: center; border-style: solid; border-width: 1px; border-color: black; 
+border-bottom: none; background: url("../img/bar_bg_top.png") repeat-x left top; border-radius: 6px 6px 0 0; }
+table.nav_bar tr td { height: 19px; color: #666666; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; 
+background: url("../img/bar_bg_bot.png") repeat-x left bottom; vertical-align: middle; }
+table.nav_bar tr:first-child td:first-child { border-top-left-radius: 6px; }
+table.nav_bar tr:first-child td:last-child { border-top-right-radius: 6px; }
+table.nav { padding: 0; margin-left: auto; margin-right: auto; margin-top:0; margin-bottom:0; border: none; }
+
+a.nav, a.nav:visited, a.nonav, a.nonav:visited { 
+display: block; float: left; color: #666666; text-decoration: none; padding: 4px 0 5px 0; }
+a.nav:hover { background-color: #eeeeee; color: #666666; text-decoration: none; }
+a.nonav { cursor: default }
+
+.drop ul { padding: 0; margin: 0; list-style-type: none; }
+.drop li { position: relative; z-index: 5; }
+.drop ul li { padding: 0 0 1px 0; }
+.drop ul ul { visibility: hidden; position: absolute; top: 20px; left: 0; border-style: solid; border-width: 1px; border-color: black; background-color: #b9ccd4; text-align: left;  padding: 0 0 1px 0; }
+.drop ul ul li { float: left; padding: 0; }
+.drop ul ul li { background: url("../img/bar_bg_top.png") repeat-x left top; }
+.drop ul ul a { padding: 3px 0 4px 0; background: url("../img/bar_bg_top.png") repeat-x left top; }
+.drop ul ul li:last-child a { padding: 3px 0 3px 0; }
+.drop ul ul a, .drop ul ul a:visited { background-color: #b9ccd4; color: #666666; display: block; text-decoration: none; min-width: 86px; }
+.drop ul ul a:hover { background: none; background-color: #eeeeee; color: #666666; display: block; text-decoration: none; min-width: 86px; }
+.nb_ins ul ul a, .nb_ins ul ul a:visited, .nb_ins ul ul a:hover, .nb_tab ul ul a, .nb_tab ul ul a:visited, .nb_tab ul ul a:hover {  min-width: 100px; }
+.nb_res ul ul a, .nb_res ul ul a:visited, .nb_res ul ul a:hover, .nb_res ul ul div, .nb_rat ul ul a, .nb_rat ul ul a:visited, .nb_rat ul ul a:hover {  min-width: 150px; }
+.drop ul li:hover ul { visibility: visible; }
+
+.fdrop { white-space: nowrap; min-width: 15em; margin: 10px 0 10px 4px; }
+.lifdrop { white-space: nowrap; padding: 2px 13px 3px 0; background: url("../img/bar_bg_top.png") repeat-x left top; }
+.lifdrop b { padding: 0 0 0 2px; }
+.lifdrop button span { display: block; background: url("../img/goarrow_xmini.png") no-repeat center center; padding: 6px 8px; }
+.nb_cli button span { display: block; background: url("../img/search_mini.png") no-repeat center center; padding: 10px 16px; }
+.lifdrop button, .nb_cli button { vertical-align: top; color: transparent; font-size: 0; }
+
+#nb_men { background: url("../img/menu_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_ins { background: url("../img/plus_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_icli, #nb_cli { background: url("../img/client_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_iexp { background: url("../img/incomes_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_ipri, #nb_rat { background: url("../img/prices_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_irul { background: url("../img/rules_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_pos { background: url("../img/pos_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_ires { background: url("../img/ireserv_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_tab { background: url("../img/tables_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_mes { background: url("../img/messages_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_roo { background: url("../img/rooms_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_cas { background: url("../img/incomes_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rul { background: url("../img/rules_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_inv { background: url("../img/inventory_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_doc, #nb_cdoc { background: url("../img/documents_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_sta { background: url("../img/statistics_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rpa { background: url("../img/respayments_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_m0 { background: url("../img/month_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_m1, #nb_m5, #nb_m9 { background: url("../img/month1_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_m2, #nb_m6, #nb_m10 { background: url("../img/month2_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_m3, #nb_m7, #nb_m11 { background: url("../img/month3_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_m4, #nb_m8, #nb_m12 { background: url("../img/month4_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_res { background: url("../img/reservations_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rall { background: url("../img/resall_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rcur { background: url("../img/rescurrent_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rfut { background: url("../img/goarrow_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rarr { background: url("../img/resarrivals_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rdep { background: url("../img/resdepartures_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_rdec { background: url("../img/resdepcurr_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_exc { background: url("../img/extracosts_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_tax { background: url("../img/taxes_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_con { background: url("../img/configure_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_use { background: url("../img/users_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_web { background: url("../img/websites_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_int { background: url("../img/interconn_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_bac { background: url("../img/backup_mini.png") no-repeat left center; padding-left: 13px; }
+#nb_men:hover, #nb_icli:hover, #nb_iexp:hover, #nb_ipri:hover, #nb_irul:hover, #nb_pos:hover, 
+#nb_ires:hover, #nb_mes:hover, #nb_roo:hover, #nb_cas:hover, #nb_rul:hover, #nb_inv:hover, 
+#nb_doc:hover, #nb_sta:hover, #nb_rpa:hover, #nb_m0:hover, #nb_m1:hover, #nb_m2:hover, 
+#nb_m3:hover, #nb_m4:hover, #nb_m5:hover, #nb_m6:hover, #nb_m7:hover, #nb_m8:hover, 
+#nb_m9:hover, #nb_m10:hover, #nb_m11:hover, #nb_m12:hover, #nb_res:hover, #nb_rall:hover, 
+#nb_rcur:hover, #nb_rfut:hover, #nb_rarr:hover, #nb_rdep:hover, #nb_rdec:hover, #nb_cli:hover, 
+#nb_rat:hover, #nb_exc:hover, #nb_tax:hover, #nb_con:hover, #nb_use:hover, #nb_web:hover, 
+#nb_int:hover, #nb_bac:hover, #nb_cdoc:hover { background-color: #eeeeee; }
+
+
+table.t1, table.m2, table.me1 { border-radius: 8px; }
+table.t1 tr:first-child td:first-child, table.m2 tr:first-child td:first-child, table.me1 tr:first-child td:first-child { border-top-left-radius: 8px; }
+table.t1 tr:first-child td:last-child, table.m2 tr:first-child td:last-child, table.me1 tr:first-child td:last-child { border-top-right-radius: 8px; }
+table.t1 tr:last-child td:last-child, table.m2 tr:last-child td:last-child, table.me1 tr:last-child td:last-child { border-bottom-right-radius: 8px; }
+table.t1 tr:last-child td:first-child, table.m2 tr:last-child td:first-child, table.me1 tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+
+table.t1 tr:first-child td, table.me1 tr:first-child td { background: url("../img/bar_bg_top.png") repeat-x left top; }
+table.t1, table.me1 { background: url("../img/bar_bg_bot.png") repeat-x left bottom; }
+table.me1 table, table.me1 table tr:first-child td { background: transparent; }
+table.t1 tr:hover, table.t1wc tr:hover, table.m1 tr:hover, table.m2 tr:hover { background-color: #eeeeee; }
+table.t1 tr:first-child, table.m1 tr:first-child, table.m2 tr:first-child { background-color: transparent; }
+table.t1 tr td { border-color: #abbbc1; }
+
+table.ckin tr:first-child td:first-child span, td.edit span { background: url("../img/edit2_mini.png") no-repeat left center; padding: 2px 0 2px 17px; font-size: 80%; }
+table.ckin tr:first-child td:last-child span { background: url("../img/key_mini.png") no-repeat left center; padding-left: 18px; }
+#h_clre b { background: url("../img/reservations_mini.png") no-repeat left center; padding: 1px 0 1px 17px; }
+
+
+
+.datepick {
+position: absolute; top: 0px; left: 0px; background: #c8dde6; padding: 2px; 
+border: 1px solid #000000; z-index: 1; visibility: hidden;
+font: bold 10px Verdana, Arial, Helvetica, sans-serif; color: #000000;
+text-align: center; }
+
+.datepick table table { border-collapse: collapse; font-size: 10px; margin-left: auto; margin-right: auto; }
+.datepick table table tr td { cursor: default; text-align: center; padding: 2px; }
+
+
+.dbutton { padding: 0; }
+
+.dbutton { 
+width: 16px; height: 18px; margin: 0; border: 0; background: transparent url('../img/calpick.png') no-repeat center top; 
+text-indent: -100em; }
+
+.calbutton { font-size: 9px; padding: 0 5px 0 5px; }
+
+
+button.ires, button.vmon, button.vtab, button.res, button.room, button.inve, button.stat, button.icli, 
+button.inex, button.vpos, button.mess, button.chav, button.ipri, button.irul, button.conf, button.gooo, 
+button.bkmm, button.cli, button.gobk, button.mres, button.mress, button.plus, button.cres, button.cress, 
+button.mcli, button.xcli, button.gsts, button.ccli, button.mcrc, button.edit, button.seld, button.vdoc, 
+button.cont, button.canc, button.aroo, button.nroo, button.cyea, button.mpri, button.cexc, button.ctax, 
+button.ccrc, button.caex, button.resp, button.crul, button.minv, button.xinv, button.prnt, button.amon, 
+button.send, button.mroo, button.croo, button.apho, button.cpho, button.exco, button.xpri, button.aexc, 
+button.prev, button.next, button.xexc, button.taxs, button.txpr, button.rate, button.usrs, button.webs, 
+button.intc, button.bkup, button.xusr, button.musr, button.ausr, button.abkp, button.dbkp, button.cbkp, 
+button.ubkp, button.rbkp, button.dcbk, button.rdbk, button.snml, button.cdoc, button.xdoc, button.adoc, 
+button.crep, button.iinc, button.iexp, button.exin, button.rlpe, button.rule, button.ainv, button.cinv, 
+button.xavl, button.cusr, button.pasw, button.login {
+background: #ffffff url("../img/button28.gif") repeat-x bottom; min-height: 36px; }
+
+
+button.login div { background: url("../img/key.png") no-repeat left center; padding: 8px 2px 8px 36px; margin: 0 0 0 1px; }
+
+/* Main menu */
+#h_mm span { background: url("../img/menu.png") no-repeat left center; padding: 3px 0 3px 32px; }
+table.ires { margin-left: auto; margin-right: auto; border: 0; }
+button.ires div { background: url("../img/ireserv.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.vmon div { background: url("../img/month.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+table.vmon, table.vtab, #mm_act { margin-left: auto; margin-right: auto; border: 0; }
+button.vtab div { background: url("../img/table.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.res div { background: url("../img/reservations.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.room div { background: url("../img/rooms.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.inve div { background: url("../img/inventory.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.stat div { background: url("../img/statistics.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.icli div { background: url("../img/iclient.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.inex div { background: url("../img/iexpenses.png") no-repeat left center; padding: 8px 2px 8px 32px; margin: 0 0 0 1px; }
+button.vpos div { background: url("../img/pos.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.mess div { background: url("../img/messages.png") no-repeat left center; padding: 8px 2px 8px 33px; margin: 0 0 0 1px; }
+button.chav div { background: url("../img/check_avail.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.ipri div { background: url("../img/iprices.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.irul div { background: url("../img/irules.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+button.conf div { background: url("../img/configure.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+button.gooo div { background: url("../img/goarrow.png") no-repeat center center; padding: 16px 17px 16px 17px; color: transparent; font-size: 0; }
+
+/* Inesert reservation-client */
+button.bkmm div { background: url("../img/backmenu.png") no-repeat left center; padding: 9px 4px 8px 32px; }
+#h_ires span { background: url("../img/ireserv.png") no-repeat left center; padding: 6px 0 6px 34px; }
+#h_icli span { background: url("../img/iclient.png") no-repeat left center; padding: 3px 0 3px 32px; }
+button.cli div { background: url("../img/client.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.gobk div { background: url("../img/goback.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.mres div { background: url("../img/mreserv.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.mress div { background: url("../img/mreservs.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.plus div { background: url("../img/plus.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+
+/* Modify reservation-client */
+.h_mres span { background: url("../img/mreserv.png") no-repeat left center; padding: 6px 0px 6px 35px; }
+.h_mress span { background: url("../img/mreservs.png") no-repeat left center; padding: 4px 0px 4px 35px; }
+button.cres div { background: url("../img/creserv.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.cress div { background: url("../img/creservs.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.mcli div { background: url("../img/mclient.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.xcli div { background: url("../img/xclient.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.gsts div { background: url("../img/guests.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+#h_mgst span { background: url("../img/guests.png") no-repeat left center; padding: 3px 0 3px 34px; }
+#h_mcli span { background: url("../img/mclient.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.ccli div { background: url("../img/cclient.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.crcm div { background: url("../img/creditcard_mini.png") no-repeat left center; padding: 1px 1px 1px 18px; margin: 0 0 0 1px; }
+#h_crc span { background: url("../img/creditcard.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.mcrc div { background: url("../img/creditcard.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+
+/* view tables */
+.h_ares b { background: url("../img/reservations.png") no-repeat left center; padding: 4px 0 4px 34px; }
+a.prev, a.next { padding: 16px 17px 16px 17px; color: transparent; font-size: 0; vertical-align: middle; }
+a.prev { background: url("../img/goback.png") no-repeat center center; }
+a.next { background: url("../img/goarrow.png") no-repeat center center; }
+button.edit div { background: url("../img/edit.png") no-repeat left center; padding: 8px 2px 8px 32px; margin: 0 0 0 1px; }
+button.seld div { background: url("../img/selected.png") no-repeat left center; padding: 8px 2px 8px 32px; margin: 0 0 0 1px; }
+button.vdoc div { background: url("../img/documents.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.cont div { background: url("../img/ok.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+button.canc div { background: url("../img/cancel.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+#h_room span { background: url("../img/rooms.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.aroo div { background: url("../img/addroom.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+#h_nroo span { background: url("../img/roomsnear.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.nroo div { background: url("../img/roomsnear.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+#h_rat span { background: url("../img/rates.png") no-repeat left center; padding: 6px 0 6px 34px; }
+button.selm div { background: url("../img/selected_mini.png") no-repeat left center; padding: 2px 1px 2px 18px; margin: 0 0 0 1px; }
+button.cyea div { background: url("../img/cmonths.png") no-repeat left center; padding: 8px 2px 8px 32px; }
+#h_exc span { background: url("../img/extracosts.png") no-repeat left center; padding: 3px 0 4px 36px; }
+#h_tax span { background: url("../img/taxes.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.mpri div { background: url("../img/mprices.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.cexc div { background: url("../img/cextracost.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.ctax div { background: url("../img/ctaxes.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_clie span { background: url("../img/client.png") no-repeat left center; padding: 3px 0 4px 32px; }
+button.ccrc div { background: url("../img/ccreditcard.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+#h_inc span { background: url("../img/incomes.png") no-repeat left center; padding: 3px 0 4px 34px; }
+#h_exp span { background: url("../img/expenses.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.caex div { background: url("../img/cexpenses.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.resp div { background: url("../img/respayments.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+#h_rul span { background: url("../img/rules.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.crul div { background: url("../img/crule.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+#h_stkr span { background: url("../img/stockroom.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.plum div { background: url("../img/plus_mini.png") no-repeat left center; padding: 2px 1px 2px 17px; }
+button.plumnotxt div { background: url("../img/plus_mini.png") no-repeat left center; padding: 8px; color: transparent; font-size: 0; }
+button.lesmnotxt div { background: url("../img/less_mini.png") no-repeat left center; padding: 8px; color: transparent; font-size: 0; }
+#h_inv span { background: url("../img/inventory.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.minv div { background: url("../img/minventory.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+button.xinv div { background: url("../img/xinventory.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+#h_doc span { background: url("../img/documents.png") no-repeat left center; padding: 3px 0 4px 34px; }
+#h_doc2 span { background: url("../img/documents_mini.png") no-repeat left center; padding: 1px 0 1px 17px; }
+button.uplm div { background: url("../img/upload_mini.png") no-repeat left center; padding: 2px 1px 2px 18px; margin: 0 0 0 1px; }
+#h_stat span { background: url("../img/statistics.png") no-repeat left center; padding: 3px 0 4px 34px; }
+
+/* Months */
+#h_mon { display: inline-block; background: url("../img/month.png") no-repeat left center; padding: 5px 0 5px 34px; }
+button.prnt div { background: url("../img/print.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.amon div { background: url("../img/addmonths.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+
+/* Other pages */
+#h_mess span { background: url("../img/messages.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.deml div { background: url("../img/emails_mini.png") no-repeat left center; padding: 3px 1px 2px 18px; margin: 0 0 0 1px; }
+button.edtm div { background: url("../img/edit_mini.png") no-repeat left center; padding: 1px 1px 1px 18px; margin: 0 0 0 1px; }
+button.send div { background: url("../img/send.png") no-repeat left center; padding: 8px 2px 8px 32px; margin: 0 0 0 1px; }
+#h_mroo span { background: url("../img/mroom.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.mroo div { background: url("../img/mroom.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.croo div { background: url("../img/croom.png") no-repeat left center; padding: 8px 2px 8px 34px; }
+button.apho div { background: url("../img/addphoto.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.cpho div { background: url("../img/cphoto.png") no-repeat left center; padding: 8px 2px 8px 34px; margin: 0 0 0 1px; }
+button.exco div { background: url("../img/extracosts.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_ipri span { background: url("../img/iprices.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.xpri div { background: url("../img/xprices.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.cncm div { background: url("../img/cancel_mini.png") no-repeat left center; padding: 2px 1px 2px 18px; margin: 0 0 0 1px; }
+button.cnrd div { background: url("../img/cancel.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.cnrm div { background: url("../img/cancel_mini.png") no-repeat left center; padding: 2px 1px 2px 18px; margin: 0 0 0 1px; }
+button.aexc div { background: url("../img/addextracost.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.prev div { background: url("../img/goback.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.next div { background: url("../img/goarrow.png") no-repeat right center; padding: 8px 34px 8px 4px; }
+button.xexc div { background: url("../img/xextracost.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.taxs div { background: url("../img/taxes.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.txpr div { background: url("../img/taxperiod.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.rate div { background: url("../img/rates.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_conf span { background: url("../img/configure.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.usrs div { background: url("../img/users.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.webs div { background: url("../img/websites.png") no-repeat left center; padding: 8px 4px 8px 34px; margin: 0 0 0 1px; }
+button.intc div { background: url("../img/interconn.png") no-repeat left center; padding: 8px 4px 8px 34px; margin: 0 0 0 1px; }
+button.bkup div { background: url("../img/backup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.xusr div { background: url("../img/xuser.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_usrs span { background: url("../img/users.png") no-repeat left center; padding: 3px 0 3px 34px; }
+button.musr div { background: url("../img/muser.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.ausr div { background: url("../img/adduser.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_webs span { background: url("../img/websites.png") no-repeat left center; padding: 3px 0 4px 34px; }
+#h_intc span { background: url("../img/interconn.png") no-repeat left center; padding: 3px 0 4px 34px; }
+#h_bkup span { background: url("../img/backup.png") no-repeat left center; padding: 3px 0 4px 32px; }
+button.abkp div { background: url("../img/addbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.dbkp div { background: url("../img/downbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.cbkp div { background: url("../img/cbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.ubkp div { background: url("../img/upbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.rbkp div { background: url("../img/restorebackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.dcbk div { background: url("../img/docbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_dcbk span { background: url("../img/docbackup.png") no-repeat left center; padding: 3px 0 4px 32px; }
+button.rdbk div { background: url("../img/resdocbackup.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.snml div { background: url("../img/emailsend.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.cdoc div { background: url("../img/cdocument.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.xdoc div { background: url("../img/xdocument.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+button.adoc div { background: url("../img/adddocument.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+#h_resp span { background: url("../img/respayments.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.crep div { background: url("../img/crespayment.png") no-repeat left center; padding: 8px 4px 8px 32px; }
+#h_iinc span { background: url("../img/iincome.png") no-repeat left center; padding: 3px 0 4px 34px; }
+#h_iexp span { background: url("../img/iexpense.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.iinc div { background: url("../img/iincome.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.iexp div { background: url("../img/iexpense.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.exin div { background: url("../img/expinc.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+#h_irul span { background: url("../img/irules.png") no-repeat left center; padding: 3px 0 4px 34px; }
+button.rlpe div { background: url("../img/ruleperiod.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.rule div { background: url("../img/rules.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.ainv div { background: url("../img/addinventory.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+button.cinv div { background: url("../img/cinventory.png") no-repeat left center; padding: 8px 4px 8px 32px; margin: 0 0 0 1px; }
+button.xavl div { background: url("../img/xavail.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.cusr div { background: url("../img/cuser.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+button.xchm div { background: url("../img/xchange_mini.png") no-repeat left center; padding: 2px 1px 2px 18px; }
+#h_chav span { background: url("../img/check_avail.png") no-repeat left center; padding: 6px 0 6px 32px; }
+#h_vmon span { background: url("../img/month.png") no-repeat left center; padding: 6px 0 6px 32px; }
+button.pasw div { background: url("../img/key.png") no-repeat left center; padding: 8px 4px 8px 34px; }
+
